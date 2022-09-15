@@ -1,9 +1,12 @@
-{% extends "base.html" %} {% block header-footer %} <div class="container-sm">
+{% extends "base.html" %} {% block header-footer %} <div class="container shadow">
     <div class="mb-3">
         <h1>{{blog.title}}</h1>
         <p class="text-muted"> by {{blog.author.first_name}} | published on: {{blog.published_date}} <br />
         </p>
-        <img class="" src="{{blog.image.url}}" alt="" style="width: 100%; border-radius: 5px;" />
-        <p class="fs-3 "> {{blog.content|safe}} </p>
+        <div class="p-2">
+            <img class="m-3" src="{{blog.image.url}}" alt=""
+                style="max-width: 600px; border-radius: 5px; float: left;" />
+            <p class="fs-5"> {{blog.content|safe}} </p>
+        </div>
     </div>
-</div> {% endblock header-footer %}
+</div>{% endblock header-footer %}

@@ -14,19 +14,17 @@
   </div>
 </div>  -->
 <!-- ---------- MORE NEW STYLING ---------- -->
-<div class="container px-4 py-5" id="hanging-icons">
-  <h2 class="pb-2 border-bottom">Hanging icons</h2>
-  <div class="row g-4 py-5 row-cols-1 row-cols-lg-3"> {% for item in context %}<div
-      class="col d-flex align-items-start">
-      <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
-        <svg class="bi" width="1em" height="1em">
-          <use xlink:href="#toggles2"></use>
-        </svg>
-      </div>
+<div class="container px-4 py-5 shadow" id="hanging-icons">
+  <h2 class="pb-2 border-bottom">Latest Blogs</h2>
+  <div class="row g-4 py-5 row-cols-1 row-cols-lg-3 "> {% for item in context %}<div
+      class="col d-flex align-items-start p-1">
       <div>
-        <h2>{{item.title}}</h2>
-        <p>{{item.content|safe}}</p>
-        <a href="#" class="btn btn-primary">Read More </a>
+        <div class="icon-square text-dark flex-shrink-0 me-3 bg-light">
+          <img class="" src="{{item.image.url}}" alt="" style="width: 100px; border-radius: 5px; display: inline;" />
+          <h2 class="fs-6" style="display: inline; padding: 5px;">{{item.title}}</h2>
+        </div>
+        <p>{{item.content|slice:"100"|safe}}</p>
+        <a href="{% url 'crud_app:blog_detail' item.title%}" class="btn btn-success mb-3 shadow">Read More </a>
       </div>
     </div> {% endfor %} </div>
 </div> {% endblock header-footer %}
