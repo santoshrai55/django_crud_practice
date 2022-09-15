@@ -1,19 +1,32 @@
-{% extends 'base.html' %} {% block header-footer %} <div class="container px-4 py-5" id="featured-3">
+{% extends 'base.html' %} {% block header-footer %}
+<!-- ------------- New Styling ------------- -->
+<!-- <div class="container px-4 py-5" id="icon-grid">
   <h2 class="pb-2 border-bottom">Recent Blogs</h2>
-  <div class="row g-4 py-5 row-cols-1 row-cols-lg-3 shadow"> {% for item in context %} <div
-      class="feature col shadow-sm">
-      <div
-        class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
+    <div class="col d-flex align-items-start"> {% for item in context %} <div>
         <img class="" src="{{item.image.url}}" alt="" style="width: 100%; border-radius: 5px;" />
-      </div>
-      <h3 class="fs-4">{{item.title}}</h3>
-      <p class="text-muted"> by {{item.author.first_name}} | published on: {{item.published_date}} <br />
-      </p>
-      <p {{item.content|slice:"100"|safe}} </p>
+        <h4 class="fw-bold mb-0">{{item.title}}</h4>
+        <p class="text-muted"> by {{item.author.first_name}} | published on: {{item.published_date}} <br />
+        <p>{{item.content|slice:"100"|safe}}</p>
         <a href="{% url 'crud_app:blog_detail' item.title%}" class="icon-link d-inline-flex align-items-center"> Read
           More <svg class="bi" width="1em" height="1em">
-            <use xlink:href="#chevron-right"></use>
-          </svg>
-        </a>
+      </div> {% endfor %} </div>
+  </div>
+</div>  -->
+<!-- ---------- MORE NEW STYLING ---------- -->
+<div class="container px-4 py-5" id="hanging-icons">
+  <h2 class="pb-2 border-bottom">Hanging icons</h2>
+  <div class="row g-4 py-5 row-cols-1 row-cols-lg-3"> {% for item in context %}<div
+      class="col d-flex align-items-start">
+      <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+        <svg class="bi" width="1em" height="1em">
+          <use xlink:href="#toggles2"></use>
+        </svg>
+      </div>
+      <div>
+        <h2>{{item.title}}</h2>
+        <p>{{item.content|safe}}</p>
+        <a href="#" class="btn btn-primary">Read More </a>
+      </div>
     </div> {% endfor %} </div>
-</div> {% endblock header-footer%}
+</div> {% endblock header-footer %}

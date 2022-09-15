@@ -18,10 +18,13 @@ def home_detail(request, title):
 
 
 def blog_create(request):
+    context = Blog.objects.all()
+    contents = {'context': context}
     form = BlogForm
     if request.method == 'POST':
-        form = BlogForm(request.POST)
+        form = BlogForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect(reverse('crud_app:home'))
+            img_object = form.instance
+            return render(request, 'crud_app/home.html', {'contents': contents, 'form': form, 'img_object': img_object})
     return render(request, 'crud_app/blog_create.html', {'form': form})
