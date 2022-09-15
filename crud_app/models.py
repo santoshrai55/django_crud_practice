@@ -17,4 +17,4 @@ class Blog(models.Model):
     published_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return self.title + ' by '+str(self.author)
+        return self.title + ' by '+str(self.author.first_name)
