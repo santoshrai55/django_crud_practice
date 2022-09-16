@@ -24,10 +24,14 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{% url 'crud_app:home' %}">Blogs</a>
-                        </li>
-                        <li class="nav-item">
+                        </li> {% if user.is_authenticated %} <li class="nav-item">
                             <a class="nav-link" href="{% url 'crud_app:newblog' %}">Add a post</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-info" href="{% url 'crud_app:newblog' %}">Profile</a>
+                        </li> {% else %} <li class="nav-item">
+                            <a class="nav-link nav-info" href="{% url 'crud_app:newblog' %}">Login</a>
+                        </li> {% endif %}
                     </ul>
                     <form role="search">
                         <input class="form-control" type="search" placeholder="Search" aria-label="Search">
