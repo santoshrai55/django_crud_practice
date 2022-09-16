@@ -1,0 +1,9 @@
+{% extends "base.html" %} {% block header-footer %} {% if user.is_authenticated %} <div class="container mt-5 "
+    style="max-width: 950px;">
+    <h1>Edit Your Post!</h1>
+    <form class="shadow p-5" action="" method="post" enctype="multipart/form-data"> {% csrf_token %} {{form.media}}
+        {{form}} <div class="form-group mt-5">
+            <button type="submit" class="btn-lg btn-success">Submit</button>
+        </div>
+    </form>
+</div> {% endif %} {% endblock header-footer %}

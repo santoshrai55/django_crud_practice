@@ -35,3 +35,15 @@ def blog_create(request):
 def profile(request):
     current_user = request.user
     return render(request, 'crud_app/profile.html', {'current_user': current_user})
+
+
+def edit_post(request, title):
+    blog = Blog.objects.get(title=title)
+    if request.method == 'POST':
+        form = BlogForm(instance=blog, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('crud_app:blog_detail', title=title)
+    else:
+        form = BlogForm(instance=blog)
+        return render(request, 'crud_app/edit.html', {'form': form})
