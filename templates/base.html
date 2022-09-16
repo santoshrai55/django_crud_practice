@@ -20,22 +20,23 @@
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarsExample09">
+                <div class="collapse navbar-collapse fs-5" id="navbarsExample09">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{% url 'crud_app:home' %}">Blogs</a>
+                            <a class="nav-link active " aria-current="page" href="{% url 'crud_app:home' %}">Blogs</a>
                         </li> {% if user.is_authenticated %} <li class="nav-item">
                             <a class="nav-link" href="{% url 'crud_app:newblog' %}">Add a post</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link nav-info" href="{% url 'crud_app:newblog' %}">Profile</a>
-                        </li> {% else %} <li class="nav-item">
-                            <a class="nav-link nav-info" href="{% url 'crud_app:newblog' %}">Login</a>
                         </li> {% endif %}
                     </ul>
                     <form role="search">
                         <input class="form-control" type="search" placeholder="Search" aria-label="Search">
                     </form>
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0"> {% if user.is_authenticated %} <li class="nav-item">
+                            <a class="nav-link nav-info" href="{% url 'crud_app:profile' %}">{{user.first_name}}'s
+                                Profile</a>
+                        </li> {% else %} <li class="nav-item">
+                            <a class="nav-link nav-info" href="{% url 'crud_app:newblog' %}">Login</a>
+                        </li> {% endif %} </ul>
                 </div>
             </div>
         </nav>

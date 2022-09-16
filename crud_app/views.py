@@ -2,6 +2,7 @@ from audioop import reverse
 from django.shortcuts import render, redirect
 from . models import Blog
 from . forms import BlogForm
+from django.contrib.auth.models import User
 # Create your views here.
 
 
@@ -28,3 +29,8 @@ def blog_create(request):
             img_object = form.instance
             return render(request, 'crud_app/home.html', {'contents': contents, 'form': form, 'img_object': img_object})
     return render(request, 'crud_app/blog_create.html', {'form': form})
+
+
+def profile(request):
+    current_user = request.user
+    return render(request, 'crud_app/profile.html', {'current_user': current_user})
